@@ -10,8 +10,9 @@ function Navbar() {
       initial={{ y: -100, opacity: 0 }} //Starts 100px above the top of the screen
       animate={{ y: 0, opacity: 1 }} //Animates the navbar into position (top)
       transition={{ duration: 0.8 }}
+      className=""
     >
-      <div className="text-gray-800   text-sm flex z-50 bg-[#eebbc3] space-x-3 p-6  justify-between items-center lg:text-[18px]  ">
+      <div className="text-gray-800   text-md flex z-50 bg-[#eebbc3] space-x-3 px-4 py-3  justify-between items-center lg:text-[18px]  ">
         {/* left logo */}
         <div
           // whileHover={{ scale: 1.1 }}
@@ -44,7 +45,7 @@ function Navbar() {
         <motion.button
           whileTap={{ scale: 0.8 }}
           transition={{ duration: 0.4, ease: easeInOut }}
-          className="hidden bg-[#e78fb3] hover:bg-[#ffc6c7] p-2 text-[#33272a] font-semibold border-1 border-gray-500 px-6 py-3  lg:flex items-center space-x-2 rounded shadow-xl"
+          className="hidden shadow-sm bg-[#e78fb3] hover:bg-[#ffc6c7] p-2 text-[#33272a] font-semibold  px-6 py-3  lg:flex items-center space-x-2 rounded shadow-xl"
         >
           <a href="/cv.pdf" download="Salama-CV.pdf">
             <span> Resume</span>
@@ -68,7 +69,10 @@ function Navbar() {
           className="flex flex-cols space-y-12 gap-6 fixed inset-0 bg-[#ffc6c7] lg:hidden justify-center items-center "
         >
           <ul className="space-y-8 font-semibold text-2xl underline ">
+            
+            <Link href="#about">
             <li>About me</li>
+            </Link>
             <li>Skills</li>
             <li>Project</li>
             <li>Contact me</li>
@@ -76,7 +80,7 @@ function Navbar() {
               <a
                 href="/cv.pdf"
                 download="Salama-CV.pdf"
-                className="border-2 border-black px-6 py-3 flex items-center gap-2 rounded-md shadow-sm hover:bg-gray-100 transition
+                className="shadow-sm px-6 py-3 flex items-center gap-2 rounded-md shadow-sm hover:bg-gray-100 transition
 "
               >
                 <span> Resume</span> <Download size={20} />
