@@ -4,8 +4,8 @@ import { Github, ExternalLink } from "lucide-react";
 import { div } from "framer-motion/client";
 function Project({ portfolioData }) {
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
-      <div className="max-w-8xl mx-12">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 ">
+      <div className="max-w-8xl mx-56">
         <h1 className="text-4xl font-semibold  mb-15 text-[#996A71]"> Projects</h1>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -17,7 +17,7 @@ function Project({ portfolioData }) {
               transition={{ delay: index * 0.15 }}
               viewport={{ once: true }}
             >
-              <div className="bg-white border-none shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300">
+              <div className="bg-white rounded-xl border-none shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300">
                 {/* Image */}
                 <div className="relative h-48 sm:h-56 overflow-hidden">
                   <img

@@ -1,42 +1,32 @@
 import React from "react";
-import { motion, AnimatePresence, spring } from "framer-motion";
-
+import { motion } from "framer-motion";
+import { div, h2 } from "framer-motion/client";
 function Skills({ skills }) {
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-8xl mx-12">
-        <h1 className="text-4xl font-semibold  mb-15 text-[#996A71]"> Skills</h1>
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-15">
+      <div className="max-w-8xl mx-56">
+        <h1 className="text-4xl font-semibold  mb-15 text-[#996A71]">
+          My Skills
+        </h1>
 
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          {skills.map((skill, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-16">
+          {skills.map((skill) => (
             <motion.div
-              key={skill.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: 0.3 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
             >
-              <div className="bg-white border-none shadow-lg hover:shadow-xl transition-all">
-                <div className="p-6 text-center">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#ffc6c7] rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <skill.icon size={24} className="text-[#33272a]" />
+              <h1 className="text-xl font-semibold text-gray-500 mb-8">{skill.category}</h1>
+              <div key={skill.category} className="flex  items-center gap-26">
+                {skill.items.map((it) => (
+                  <div key={it.name} className="flex flex-col justify-center gap-3  items-center">
+                    <img src={it.icon} alt={it.name} width={60}  />
+
+                    <h2>{it.name}</h2>
                   </div>
-                  <h3 className="font-semibold text-[#33272a] text-sm sm:text-base">
-                    {skill.name}
-                  </h3>
-                  {/* Progress Bar */}
-                  {/* <div className="mt-3 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1, delay: 0.3 }}
-                      viewport={{ once: true }}
-                      className="h-full bg-gradient-to-r from-[#e78fb3] to-[#eebbc3] rounded-full"
-                    />
-                  </div>
-                  */}
-                </div>
+                ))}
               </div>
             </motion.div>
           ))}

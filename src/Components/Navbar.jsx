@@ -12,14 +12,13 @@ function Navbar() {
       transition={{ duration: 0.8 }}
       className=""
     >
-      <div className="text-gray-800   text-md flex z-50 bg-[#eebbc3] space-x-3 px-4 py-3  justify-between items-center lg:text-[18px]  ">
+      <div className="text-[#996A71]  text-md flex z-50 bg-[#eebbc3] space-x-3 px-4 py-3  justify-between items-center lg:text-[18px]  ">
         {/* left logo */}
         <div
           // whileHover={{ scale: 1.1 }}
           className="flex space-x-2 items-center"
         >
-          <img src={logo} alt="" className=" w-7 lg:w-10" />
-          <span className=" text-lg lg:text-2xl font-bold font-sora cursor-pointer">
+          <span className=" text-lg  lg:text-2xl font-bold font-sora cursor-pointer">
             Salama
           </span>
         </div>
@@ -45,12 +44,12 @@ function Navbar() {
         <motion.button
           whileTap={{ scale: 0.8 }}
           transition={{ duration: 0.4, ease: easeInOut }}
-          className="hidden shadow-sm bg-[#e78fb3] hover:bg-[#ffc6c7] p-2 text-[#33272a] font-semibold  px-6 py-3  lg:flex items-center space-x-2 rounded shadow-xl"
+          className="hidden  shadow-sm bg-[#e78fb3] hover:bg-[#e8839d] p-2 text-gray-100 font-semibold  px-6 py-3  lg:flex items-center space-x-2 rounded shadow-xl"
         >
           <a href="/cv.pdf" download="Salama-CV.pdf">
-            <span> Resume</span>
+            <span className="text-[#996A71]"> Resume</span>
           </a>
-          <Download size={20} />
+          <Download size={20} className="text-[#996A71]" />
         </motion.button>
         <motion.div whileTap={{ scale: 0.6 }} className="lg:hidden">
           <Menu
@@ -80,10 +79,10 @@ function Navbar() {
               <a
                 href="/cv.pdf"
                 download="Salama-CV.pdf"
-                className="shadow-sm px-6 py-3 flex items-center gap-2 rounded-md shadow-sm hover:bg-gray-100 transition
+                className="shadow-sm  px-6 py-3 flex items-center gap-2 rounded-md shadow-sm hover:bg-gray-100 transition
 "
               >
-                <span> Resume</span> <Download size={20} />
+                <span className="text-[#996A71]"> Resume</span> <Download size={20} />
               </a>
             </li>
           </ul>

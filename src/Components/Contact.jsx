@@ -1,4 +1,18 @@
-function ContactSection() {
+import { useState } from "react";
+import { motion } from "framer-motion";
+import toast, { Toaster } from "react-hot-toast";
+import emailjs from "@emailjs/browser";
+
+import {
+  Send,
+  Contact,
+  Mail,
+  MapPin,
+  GithubIcon,
+  Linkedin,
+} from "lucide-react";
+
+function ContactSection({ portfolioData }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -9,18 +23,39 @@ function ContactSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    alert("Thank you for your message! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
-    setSending(false);
+    try {
+      await emailjs.send(
+        "service_zo7rag8",
+        "template_t3eicoj",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        "d6mC2eBW1ENtMhffA"
+      );
+
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      toast.error("Failed to send message");
+      console.error(error);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <SectionTitle title="Contact Me" />
-
+        <motion.h1
+          initial={{ y: -50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-semibold  text-center mb-15 text-[#996A71]"
+        >
+          Contact me
+        </motion.h1>
         <div className="mt-12 grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <motion.div
@@ -36,34 +71,24 @@ function ContactSection() {
               I'm always open to discussing new projects, creative ideas, or
               opportunities to be part of your vision.
             </p>
-
-            <div className="space-y-6">
-              <ContactInfo
-                icon={Mail}
-                label="Email"
-                value={portfolioData.email}
-                href={`mailto:${portfolioData.email}`}
-              />
-              <ContactInfo
-                icon={Phone}
-                label="Phone"
-                value={portfolioData.phone}
-                href={`tel:${portfolioData.phone}`}
-              />
-              <ContactInfo
-                icon={MapPin}
-                label="Location"
-                value={portfolioData.location}
-              />
+            <div className="space-y-6 mb-5">
+              <div className="flex  gap-4">
+                <Mail />
+                <p>{portfolioData.email}</p>
+              </div>
+              <div className="flex gap-4">
+                <Contact />
+                <p>{portfolioData.phone}</p>
+              </div>
+              <div className="flex gap-4">
+                <MapPin value={portfolioData.location} />
+                <p>{portfolioData.location}</p>
+              </div>
             </div>
-
-            {/* Social Links */}
-            <div className="mt-8 flex gap-4">
-              <SocialButton href={portfolioData.social.github} icon={Github} />
-              <SocialButton
-                href={portfolioData.social.linkedin}
-                icon={Linkedin}
-              />
+            <h1 className="text-2xl font-semibold"> Social Links</h1>{" "}
+            <div className="mt-2 flex gap-4">
+              <GithubIcon />
+              <Linkedin />
             </div>
           </motion.div>
 
@@ -74,28 +99,31 @@ function ContactSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-white border-none shadow-xl">
-              <CardContent className="p-6 sm:p-8">
-                <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="bg-white border-none shadow-xl rounded-lg  ">
+              <div className="p-6 sm:p-8">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-5 flex flex-col items-center"
+                >
                   <div>
-                    <label className="block text-sm font-medium text-[#33272a] mb-2">
+                    <label className="block  text-sm font-medium text-[#33272a] mb-2">
                       Name
                     </label>
-                    <Input
+                    <input
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
                       placeholder="Your name"
                       required
-                      className="border-gray-200 focus:border-[#e78fb3] focus:ring-[#e78fb3]"
+                      className="border-gray-300 outline-gray-400 w-100 border rounded-lg p-1"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-[#33272a] mb-2">
                       Email
                     </label>
-                    <Input
+                    <input
                       type="email"
                       value={formData.email}
                       onChange={(e) =>
@@ -103,14 +131,14 @@ function ContactSection() {
                       }
                       placeholder="your@email.com"
                       required
-                      className="border-gray-200 focus:border-[#e78fb3] focus:ring-[#e78fb3]"
+                      className="border-gray-300 outline-gray-400 w-100 border rounded-lg p-1"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-[#33272a] mb-2">
                       Message
                     </label>
-                    <Textarea
+                    <textarea
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
@@ -118,29 +146,26 @@ function ContactSection() {
                       placeholder="Your message..."
                       rows={5}
                       required
-                      className="border-gray-200 focus:border-[#e78fb3] focus:ring-[#e78fb3] resize-none"
+                      className="border-gray-300 outline-gray-400 w-100 border rounded-lg p-1"
                     />
                   </div>
-                  <Button
-                    type="submit"
-                    disabled={sending}
-                    className="w-full bg-[#e78fb3] hover:bg-[#d67fa3] text-[#33272a] font-semibold py-6 rounded-xl shadow-lg"
-                  >
-                    {sending ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Send Message
-                        <Send size={18} className="ml-2" />
-                      </>
-                    )}
-                  </Button>
+                  <div className="flex gap-8 w-100 items-center justify-center rounded-xl bg-[#e78fb3] hover:bg-[#d67fa3] text-[#33272a]">
+                    <button
+                      type="submit"
+                      disabled={sending}
+                      className="   font-semibold py-4  shadow-lg"
+                    >
+                      {sending ? "Sending..." : <>Send Message</>}
+                    </button>
+                  </div>
                 </form>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
     </section>
   );
 }
+
+export default ContactSection;
