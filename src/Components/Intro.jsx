@@ -9,7 +9,7 @@ function Intro() {
   return (
     <div>
       {" "}
-      <div className="flex flex-col justify-center  px-17 lg:flex-row lg:justify-evenly lg:items-center">
+      <div className="flex flex-col mx-20 justify-center  px-10 lg:flex-row lg:justify-evenly lg:items-center">
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -95,7 +95,7 @@ function Intro() {
           />
         </motion.div>
       </div>
-      <img src="" alt="" />
+   
     </div>
   );
 }

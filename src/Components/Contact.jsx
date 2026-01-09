@@ -47,7 +47,7 @@ function ContactSection({ portfolioData }) {
 
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-50">
         <motion.h1
           initial={{ y: -50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -87,8 +87,16 @@ function ContactSection({ portfolioData }) {
             </div>
             <h1 className="text-2xl font-semibold"> Social Links</h1>{" "}
             <div className="mt-2 flex gap-4">
-              <GithubIcon />
-              <Linkedin />
+              <a href="https://github.com/Salmapraj" target="_blank">
+                <GithubIcon />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/salama-prajapati/ "
+                target="_blank"
+              >
+                <Linkedin />
+              </a>
             </div>
           </motion.div>
 

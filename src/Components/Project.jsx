@@ -1,14 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
-import { div } from "framer-motion/client";
+
+
 function Project({ portfolioData }) {
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 ">
-      <div className="max-w-8xl mx-56">
-        <h1 className="text-4xl font-semibold  mb-15 text-[#996A71]"> Projects</h1>
+      <div className="max-w-8xl mx-50">
+        <motion.h1
+                initial={{ y: -50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-4xl font-semibold  text-center mb-15 text-[#996A71]"
+              >Projects</motion.h1>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="mt-12 grid sm:grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {portfolioData.projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -59,12 +66,10 @@ function Project({ portfolioData }) {
                   <p className="mt-2 text-gray-600 text-sm sm:text-base line-clamp-2">
                     {project.description}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 flex text-md flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      // <Badge key={tech} variant="secondary" className="bg-[#ffc6c7]/50 text-[#33272a] text-xs">
-                      //   {tech}
-                      // </Badge>
-                      <div> {tech}</div>
+                  
+                      <div className="text-xs py-1 text-white/50  px-2 bg-[#996A71] rounded-lg" > {tech}</div>
                     ))}
                   </div>
                 </div>

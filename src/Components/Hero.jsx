@@ -1,7 +1,6 @@
 import React from "react";
 // import girl from "/images/girl.png"
 
-
 import Skills from "./Skills";
 import About from "./About";
 import nextjs from "../assets/icons/Nextjs.svg";
@@ -21,6 +20,10 @@ import shadcn from "../assets/icons/shdcn.png";
 import postman from "../assets/icons/Postman.svg";
 import cs from "../assets/icons/CS.svg";
 import Project from "./Project";
+import movie from "../assets/movie.png";
+import zero from "../assets/zero.png";
+import task from "../assets/task.png";
+import blog from "../assets/blog.png";
 import Intro from "./Intro";
 import ContactSection from "./Contact";
 function Hero() {
@@ -37,7 +40,7 @@ function Hero() {
     },
     about: {
       description:
-        " I am a software developer spealizing in Javascript, ReactJs, NextJs, Nodejs, Express js ,Mongodb. I enjoy building scalable, user-focusedweb applications and turning real-world problems into clean,efficient code. I’m constantly learning new teI’m actively improvingmy skills through projects and enjoy solving problems, understanding how things work under the hood, and writing better code every day.",
+        " I am a software developer specializing in Javascript, ReactJs, Nodejs, Express js ,Mongodb. I enjoy building scalable, user-focusedweb applications and turning real-world problems into clean,efficient code. I’m constantly learning new teI’m actively improvingmy skills through projects and enjoy solving problems, understanding how things work under the hood, and writing better code every day.",
     },
     skills: [
       {
@@ -83,31 +86,39 @@ function Hero() {
         title: "Movie Review",
         description:
           "A full-stack web application that allows users to explore movies, rate them, and share reviews. It integrates data from TMDB (The Movie Database) API and includes JWT authentication, searching, pagination, reviewing, movie ratings and listings.",
-        image:
-          "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&h=400&fit=crop",
+        image: movie,
         tech: ["React.js", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
         github: "https://github.com/Salmapraj/Movie-Review#",
         live: "https://movie-review-dzzu.vercel.app/",
       },
       {
-        title: "Blog Application",
-        description:
-          "A web-based application that allows users to add, update, delete and view blogs. Features a clean interface for managing blog posts with full CRUD operations.",
-        image:
-          "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop",
-        tech: ["React.js", "Tailwind CSS", "Node.js", "Express"],
-        github: "https://github.com/Salmapraj/Blog-App",
-        live: "#",
-      },
-      {
         title: "ZeroBite",
         description:
           "An e-commerce application focused on food recommendation and expiry management. This app focuses on food waste reduction by benefitting both buyer and seller parties.",
-        image:
-          "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&h=400&fit=crop",
+        image: zero,
+
         tech: ["React.js", "Tailwind CSS", "Django REST", "PostgreSQL"],
         github: "https://github.com/Salmapraj/Zero_bite",
-        live: "#",
+        live: "https://github.com/Salmapraj/Zero_bite",
+      },
+
+      {
+        title: "TaskFlow",
+        description:
+          "A responsive task management web application built using React.js and Tailwind CSS with JSON Server as a mock REST API. The app supports full CRUD operations—creating, updating, deleting, and viewing tasks. It also includes a search feature with debouncing to optimize performance and improve user experience by minimizing unnecessary API calls.",
+        image: task,
+        tech: ["React.js", "Tailwind CSS", "Json sever"],
+        github: "https://github.com/Salmapraj/Task-Tracker",
+        live: "https://github.com/Salmapraj/Task-Tracker",
+      },
+      {
+        title: "Blog Application",
+        description:
+          "A web-based application that allows users to add, update, delete and view blogs. Features a clean interface for managing blog posts with full CRUD operations.",
+        image: blog,
+        tech: ["React.js", "Tailwind CSS", "Node.js", "Express"],
+        github: "https://github.com/Salmapraj/Blog-App",
+        live: "https://github.com/Salmapraj/Blog-App",
       },
     ],
     education: [
@@ -135,7 +146,7 @@ function Hero() {
   };
 
   return (
-    <div className="bg-[#f6eaed]">
+    <div id="home" className="bg-[#f6eaed]">
       <Intro />
       <About portfolioData={portfolioData} />
       <Skills skills={portfolioData.skills} />
